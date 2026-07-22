@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  THE GROUNDSKEEPER — ISSUE TEMPLATE
+  ==================================
+  Fill every {{TOKEN}} below, then save as groundskeeper_volume_N.html.
+
+  DATE CONVENTION (fixes the Vol. I ambiguity):
+  - The issue is PUBLISHED Saturday morning.
+  - {{WEEK_OF}} is the date of the UPCOMING MONDAY (two days after publication).
+  - The forecast window runs from publication Saturday through the following
+    Friday, so "Sunday into Monday" style phrasing is always inside the window.
+  - {{VOLUME}} is a Roman numeral, incremented every issue.
+
+  CONTENT RULES (carried over from Vol. I):
+  - Unverified prices/temps get <span class="unknown">Unknown</span> or an
+    explicit confidence note — never state stale data as fact.
+  - Every claim in sections 01–04 needs a source link in the footer.
+  - "Forward to Mom" is one warm sentence summarizing the week's single most
+    actionable thing. No jargon, no caveats.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Groundskeeper — Week of {{WEEK_OF}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,100;1,9..144,300..900,100&family=Karla:wght@400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f2e7;
+  --paper-deep:#efe7d4;
+  --ink:#2b2a1f;
+  --leaf:#3d5a2e;
+  --leaf-dark:#2c4321;
+  --tomato:#c1502e;
+  --marigold:#d99a2b;
+  --soil:#6b5537;
+  --sky:#7fa3b0;
+  --sky-deep:#4c7484;
+  --rule:#c9bd9f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--paper-deep);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(217,154,43,.06), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(61,90,46,.07), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  font-family:'Karla',sans-serif;
+  color:var(--ink);
+  line-height:1.65;
+  padding:32px 16px 64px;
+}
+.sheet{
+  max-width:680px;margin:0 auto;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  box-shadow:0 2px 4px rgba(43,42,31,.08), 0 24px 48px -16px rgba(43,42,31,.22);
+  overflow:hidden;
+}
+/* ---------- masthead ---------- */
+.masthead{
+  text-align:center;
+  padding:44px 32px 0;
+  position:relative;
+}
+.masthead .kicker{
+  font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--soil);
+}
+.masthead h1{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(42px,9vw,64px);
+  line-height:1.02;
+  color:var(--leaf-dark);
+  margin:10px 0 4px;
+  letter-spacing:-.01em;
+}
+.masthead .tagline{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:16px;color:var(--soil);
+}
+.issue-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--soil);
+  border-top:2px solid var(--leaf-dark);
+  border-bottom:1px solid var(--rule);
+  margin:22px 32px 0;
+  padding:9px 2px;
+  gap:8px;flex-wrap:wrap;
+}
+.issue-bar span:nth-child(2){color:var(--tomato)}
+/* ---------- sprout divider ---------- */
+.divider{display:flex;align-items:center;gap:14px;margin:36px 32px 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--rule)}
+.divider svg{flex:0 0 auto}
+/* ---------- sections ---------- */
+section{padding:8px 32px 0}
+.sec-label{
+  display:flex;align-items:baseline;gap:12px;
+  margin:26px 0 12px;
+}
+.sec-num{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:34px;color:var(--marigold);line-height:1;
+}
+.sec-label h2{
+  font-family:'Fraunces',serif;font-weight:700;
+  font-size:24px;color:var(--leaf-dark);line-height:1.15;
+}
+section p{font-size:15.5px;margin-bottom:12px}
+section a{color:var(--leaf);text-decoration-color:var(--marigold);text-underline-offset:3px}
+section a:hover{color:var(--tomato)}
+.footnote{font-size:13px;color:var(--soil)}
+/* seed-packet list */
+.seed-list{list-style:none;margin:0 0 14px}
+.seed-list li{
+  position:relative;
+  padding:0 0 10px 30px;
+  font-size:15.5px;
+}
+.seed-list li::before{
+  content:"❧";
+  position:absolute;left:2px;top:0;
+  color:var(--leaf);font-size:15px;
+}
+.seed-list li strong{color:var(--leaf-dark)}
+/* rule-of-thumb / callout */
+.callout{
+  background:linear-gradient(0deg, rgba(61,90,46,.06), rgba(61,90,46,.06));
+  border-left:3px solid var(--leaf);
+  padding:14px 18px;
+  margin:16px 0 6px;
+  font-size:14.5px;
+}
+.callout .tag{
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--leaf);display:block;margin-bottom:4px;
+}
+/* ---------- weather card ---------- */
+.weather{
+  margin:18px 0 6px;
+  border:1px solid var(--rule);
+  background:linear-gradient(180deg,#eef2ee,#f7f2e7 70%);
+  padding:18px 20px;
+}
+.weather-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.weather-temp{
+  font-family:'Fraunces',serif;font-weight:800;font-size:44px;
+  color:var(--sky-deep);line-height:1;
+}
+.weather-temp small{font-size:16px;font-weight:400;color:var(--soil)}
+.weather-desc{flex:1;min-width:220px;font-size:14.5px}
+.confidence{
+  display:inline-block;margin-top:8px;
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  background:var(--marigold);color:var(--ink);
+  padding:3px 9px;border-radius:2px;
+}
+/* ---------- deals table ---------- */
+.deals{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:14.5px}
+.deals th{
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--soil);text-align:left;
+  border-bottom:2px solid var(--leaf-dark);
+  padding:6px 10px 6px 0;
+}
+.deals td{border-bottom:1px solid var(--rule);padding:10px 10px 10px 0;vertical-align:top}
+.deals td:first-child{font-weight:700;color:var(--leaf-dark);white-space:nowrap}
+.unknown{
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--tomato);
+}
+/* ---------- forward-to-mom ---------- */
+.mom{
+  margin:36px 32px 0;
+  background:var(--leaf-dark);
+  color:var(--paper);
+  padding:30px 30px 26px;
+  position:relative;
+}
+.mom::before{
+  content:"“";
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:110px;line-height:0;
+  position:absolute;top:38px;left:18px;
+  color:var(--marigold);opacity:.55;
+}
+.mom .tag{
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--marigold);display:block;margin-bottom:10px;
+}
+.mom p{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:19px;line-height:1.5;
+  padding-left:34px;
+}
+/* ---------- footer ---------- */
+footer{
+  margin-top:40px;
+  border-top:2px solid var(--leaf-dark);
+  background:var(--paper);
+  padding:22px 32px 34px;
+}
+footer .foot-title{
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--soil);margin-bottom:10px;
+}
+footer ul{list-style:none;font-size:12.5px;columns:2;column-gap:28px}
+footer li{margin-bottom:6px;break-inside:avoid}
+footer a{color:var(--leaf);text-decoration-color:var(--rule);text-underline-offset:2px}
+footer a:hover{color:var(--tomato)}
+.colophon{
+  margin-top:20px;text-align:center;
+  font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--soil);
+}
+@media (max-width:540px){
+  footer ul{columns:1}
+  .masthead{padding:34px 20px 0}
+  .issue-bar,.divider,.mom{margin-left:20px;margin-right:20px}
+  section,footer{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="kicker">A Weekly Dispatch from the Raised Beds</div>
+    <h1>The Groundskeeper</h1>
+    <div class="tagline">Oaklyn, New Jersey · USDA Zone 7a/7b</div>
+    <div class="issue-bar">
+      <span>Vol. {{VOLUME}}</span>
+      <span>Week of {{WEEK_OF}}</span>
+      <span>Saturday Edition</span>
+    </div>
+  </header>
+
+  <div class="divider">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <path d="M13 24V10" stroke="#3d5a2e" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 12C13 7 9 4 4 4c0 5 4 8 9 8z" fill="#3d5a2e"/>
+      <path d="M13 12c0-5 4-8 9-8 0 5-4 8-9 8z" fill="#6b8f4e"/>
+    </svg>
+  </div>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">01</span><h2>Plant &amp; Sow This Week</h2></div>
+    <p>{{SOW_INTRO — one or two sentences framing the week}}</p>
+    <ul class="seed-list">
+      <li><strong>Direct sow:</strong> {{DIRECT_SOW_LIST}}</li>
+      <li><strong>Start indoors now:</strong> {{INDOOR_START_LIST}}</li>
+    </ul>
+    <div class="callout">
+      <span class="tag">Rule of Thumb</span>
+      {{RULE_OF_THUMB — one practical heuristic per issue}}
+    </div>
+  </section>
+
+  <div class="divider">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <circle cx="13" cy="13" r="4" fill="#d99a2b"/>
+      <g stroke="#c1502e" stroke-width="2" stroke-linecap="round">
+        <path d="M13 3v4M13 19v4M3 13h4M19 13h4M6 6l3 3M17 17l3 3M20 6l-3 3M9 17l-3 3"/>
+      </g>
+    </svg>
+  </div>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">02</span><h2>Tasks in the Beds</h2></div>
+    <ul class="seed-list">
+      <li><strong>{{TASK_1_LEAD}}</strong> {{TASK_1_BODY}}</li>
+      <li><strong>{{TASK_2_LEAD}}</strong> {{TASK_2_BODY}}</li>
+      <li><strong>{{TASK_3_LEAD}}</strong> {{TASK_3_BODY}}</li>
+      <li><strong>{{TASK_4_LEAD}}</strong> {{TASK_4_BODY}}</li>
+    </ul>
+  </section>
+
+  <div class="divider">
+    <svg width="28" height="26" viewBox="0 0 28 26" fill="none" aria-hidden="true">
+      <path d="M6 14a6 6 0 0 1 0-8 6 6 0 0 1 9-1 6 6 0 0 1 9 2 5 5 0 0 1-1 7z" fill="#7fa3b0" opacity=".85"/>
+      <g stroke="#7fa3b0" stroke-width="2" stroke-linecap="round">
+        <path d="M8 18l-2 4M14 18l-2 4M20 18l-2 4"/>
+      </g>
+    </svg>
+  </div>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">03</span><h2>The Week's Sky</h2></div>
+    <div class="weather">
+      <div class="weather-row">
+        <div class="weather-temp">{{HIGH_TEMP}}°<small>/ {{LOW_RANGE}}</small></div>
+        <div class="weather-desc">
+          <strong>{{FROST_LINE — e.g. "No frost risk."}}</strong> {{FORECAST_SUMMARY — window runs publication Saturday through the following Friday}}
+          <span class="confidence">Confidence: {{CONFIDENCE — Confirmed | Likely | Uncertain}}</span>
+        </div>
+      </div>
+    </div>
+    <p class="footnote">{{FORECAST_CAVEAT — disagreements between sources, stale fetches; delete if none}}</p>
+  </section>
+
+  <div class="divider">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <path d="M13 23c-5 0-8-3-8-8 0-6 5-10 8-12 3 2 8 6 8 12 0 5-3 8-8 8z" fill="#c1502e"/>
+      <path d="M13 23c-2.5-3-3-8 0-14" stroke="#f7f2e7" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">04</span><h2>The Deal Patch</h2></div>
+    <table class="deals">
+      <tr><th scope="col">Store</th><th scope="col">What we found</th></tr>
+      <tr>
+        <td>{{STORE_1}}</td>
+        <td>{{STORE_1_FINDINGS — mark unverified prices with <span class="unknown">Unknown</span>}}</td>
+      </tr>
+      <tr>
+        <td>{{STORE_2}}</td>
+        <td>{{STORE_2_FINDINGS}}</td>
+      </tr>
+    </table>
+    <p class="footnote">{{DEALS_CAVEAT — what was NOT found this week; delete if none}}</p>
+  </section>
+
+  <div class="mom">
+    <span class="tag">Forward to Mom</span>
+    <p>{{MOM_SUMMARY — one warm sentence, the week's single most actionable thing}}</p>
+  </div>
+
+  <footer>
+    <div class="foot-title">Sources &amp; Field Notes</div>
+    <ul>
+      <li><a href="{{SOURCE_URL}}">{{SOURCE_LABEL}}</a></li>
+      <li><a href="https://forecast.weather.gov/MapClick.php?lat=39.9004&lon=-75.0846">NWS point forecast — Oaklyn, NJ</a></li>
+      <!-- one <li> per source; every claim above must appear here -->
+    </ul>
+    <div class="colophon">Grown weekly for the raised beds of Oaklyn · The Groundskeeper, Saturday morning edition</div>
+  </footer>
+
+</div>
+</body>
+</html>
