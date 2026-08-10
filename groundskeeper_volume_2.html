@@ -1,28 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--
-  THE GROUNDSKEEPER — ISSUE TEMPLATE
-  ==================================
-  Fill every {{TOKEN}} below, then save as groundskeeper_volume_N.html.
-
-  DATE CONVENTION (fixes the Vol. I ambiguity):
-  - The issue is PUBLISHED Saturday morning.
-  - {{WEEK_OF}} is the date of the UPCOMING MONDAY (two days after publication).
-  - The forecast window runs from publication Saturday through the following
-    Friday, so "Sunday into Monday" style phrasing is always inside the window.
-  - {{VOLUME}} is a Roman numeral, incremented every issue.
-
-  CONTENT RULES (carried over from Vol. I):
-  - Unverified prices/temps get <span class="unknown">Unknown</span> or an
-    explicit confidence note — never state stale data as fact.
-  - Every claim in sections 01–04 needs a source link in the footer.
-  - "Forward to Mom" is one warm sentence summarizing the week's single most
-    actionable thing. No jargon, no caveats.
--->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Groundskeeper — Week of {{WEEK_OF}}</title>
+<title>The Groundskeeper — Week of August 10, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,100;1,9..144,300..900,100&family=Karla:wght@400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
@@ -243,9 +224,9 @@ footer a:hover{color:var(--tomato)}
     <h1>The Groundskeeper</h1>
     <div class="tagline">Oaklyn, New Jersey · USDA Zone 7a/7b</div>
     <div class="issue-bar">
-      <span>Vol. {{VOLUME}}</span>
-      <span>Week of {{WEEK_OF}}</span>
-      <span>Saturday Edition</span>
+      <span>Vol. II</span>
+      <span>Week of August 10, 2026</span>
+      <span>Monday Edition</span>
     </div>
   </header>
 
@@ -259,14 +240,14 @@ footer a:hover{color:var(--tomato)}
 
   <section>
     <div class="sec-label"><span class="sec-num">01</span><h2>Plant &amp; Sow This Week</h2></div>
-    <p>{{SOW_INTRO — one or two sentences framing the week}}</p>
+    <p>This is the late-summer handoff week: keep harvesting the heat lovers, but give the open bed space to quick fall crops now.</p>
     <ul class="seed-list">
-      <li><strong>Direct sow:</strong> {{DIRECT_SOW_LIST}}</li>
-      <li><strong>Start indoors now:</strong> {{INDOOR_START_LIST}}</li>
+      <li><strong>Sow now:</strong> spinach, leaf lettuce, radishes, turnip greens, turnip roots, mustard greens, kale, Swiss chard, and green bunching onions.</li>
+      <li><strong>Last call:</strong> August 10 is Rutgers' South Jersey cutoff for bush beans, beets, cabbage, and cauliflower. Broccoli transplants can continue through August 20; kale transplants through August 30.</li>
     </ul>
     <div class="callout">
       <span class="tag">Rule of Thumb</span>
-      {{RULE_OF_THUMB — one practical heuristic per issue}}
+      For hot-soil crops such as lettuce and spinach, sow in late-day shade, keep the seedbed evenly moist, and use light cover until germination.
     </div>
   </section>
 
@@ -282,10 +263,10 @@ footer a:hover{color:var(--tomato)}
   <section>
     <div class="sec-label"><span class="sec-num">02</span><h2>Tasks in the Beds</h2></div>
     <ul class="seed-list">
-      <li><strong>{{TASK_1_LEAD}}</strong> {{TASK_1_BODY}}</li>
-      <li><strong>{{TASK_2_LEAD}}</strong> {{TASK_2_BODY}}</li>
-      <li><strong>{{TASK_3_LEAD}}</strong> {{TASK_3_BODY}}</li>
-      <li><strong>{{TASK_4_LEAD}}</strong> {{TASK_4_BODY}}</li>
+      <li><strong>Beat Monday's heat.</strong> Water deeply before the afternoon reaches the 90s, but do not count forecast thunderstorms as irrigation until you check the soil.</li>
+      <li><strong>Protect new sowings.</strong> Shade cloth or a light board over the row can prevent the surface from baking; remove solid covers as soon as seedlings emerge.</li>
+      <li><strong>Pest watch:</strong> inspect brassicas for imported cabbageworm and squash leaves for eggs; hand-pick early before populations build.</li>
+      <li><strong>Harvest and reset:</strong> pick cucumbers, beans, squash, and tomatoes frequently. Remove spent plants, leave diseased material out of the compost, and top-dress cleared beds before fall planting.</li>
     </ul>
   </section>
 
@@ -302,21 +283,23 @@ footer a:hover{color:var(--tomato)}
     <div class="sec-label"><span class="sec-num">03</span><h2>The Week's Sky</h2></div>
     <div class="weather">
       <div class="weather-row">
-        <div class="weather-temp">{{HIGH_TEMP}}°<small>/ {{LOW_RANGE}}</small></div>
+        <div class="weather-temp">94°<small>/ lows 66–73</small></div>
         <div class="weather-desc">
-          <strong>{{FROST_LINE — e.g. "No frost risk."}}</strong> {{FORECAST_SUMMARY — window runs publication Saturday through the following Friday}}
-          <span class="confidence">Confidence: {{CONFIDENCE — Confirmed | Likely | Uncertain}}</span>
+          <strong>Heat first, then relief.</strong> Monday reaches about 94° with thunderstorms likely after 1 p.m. Storm chances linger through Thursday, then highs settle into the mid-80s Friday through Sunday. Water from measured soil moisture, not the forecast alone.
+          <span class="confidence">Confidence: Confirmed</span>
         </div>
       </div>
-      <!-- Daily strip: 7 cells, publication Saturday through Friday.
-           Pull from https://api.weather.gov/gridpoints/PHI/53,77/forecast
-           (day periods: temperature = high, night periods = low, PoP = d-rain). -->
       <div class="daily">
-        <div class="day"><div class="d-name">{{DAY}}</div><div class="d-hi">{{HI}}°<small>/{{LO}}</small></div><div class="d-cond">{{COND — 1-2 words}}</div><div class="d-rain">{{POP}}%</div></div>
-        <!-- ×7 -->
+        <div class="day"><div class="d-name">Mon</div><div class="d-hi">94°<small>/73</small></div><div class="d-cond">T-storms</div><div class="d-rain">60%</div></div>
+        <div class="day"><div class="d-name">Tue</div><div class="d-hi">91°<small>/71</small></div><div class="d-cond">P.M. storms</div><div class="d-rain">30%</div></div>
+        <div class="day"><div class="d-name">Wed</div><div class="d-hi">88°<small>/71</small></div><div class="d-cond">Showers</div><div class="d-rain">40%</div></div>
+        <div class="day"><div class="d-name">Thu</div><div class="d-hi">89°<small>/71</small></div><div class="d-cond">Storm chance</div><div class="d-rain">30%</div></div>
+        <div class="day"><div class="d-name">Fri</div><div class="d-hi">86°<small>/66</small></div><div class="d-cond">Mostly sunny</div><div class="d-rain">12%</div></div>
+        <div class="day"><div class="d-name">Sat</div><div class="d-hi">84°<small>/66</small></div><div class="d-cond">Sunny</div><div class="d-rain">15%</div></div>
+        <div class="day"><div class="d-name">Sun</div><div class="d-hi">85°<small>/68</small></div><div class="d-cond">Shower chance</div><div class="d-rain">30%</div></div>
       </div>
     </div>
-    <p class="footnote">{{FORECAST_CAVEAT — disagreements between sources, stale fetches; delete if none}}</p>
+    <p class="footnote">Daily figures fetched from the NWS point forecast for Oaklyn at 9:08 a.m. EDT on Monday, August 10. Rain percentages are the NWS probability of precipitation and may change as the forecast updates.</p>
   </section>
 
   <div class="divider">
@@ -331,30 +314,31 @@ footer a:hover{color:var(--tomato)}
     <table class="deals">
       <tr><th scope="col">Store</th><th scope="col">What we found</th></tr>
       <tr>
-        <td>{{STORE_1}}</td>
-        <td>{{STORE_1_FINDINGS — mark unverified prices with <span class="unknown">Unknown</span>}}</td>
+        <td>Lowe's</td>
+        <td>Current Oaklyn-area garden-center clearance and mulch pricing: <span class="unknown">Unknown</span>. Check the local store listing before making a trip; online prices and inventory vary by location.</td>
       </tr>
       <tr>
-        <td>{{STORE_2}}</td>
-        <td>{{STORE_2_FINDINGS}}</td>
+        <td>Home Depot</td>
+        <td>Current Oaklyn-area garden-center clearance and mulch pricing: <span class="unknown">Unknown</span>. Late-summer clearance is plausible, but no local price is stated here without store-level verification.</td>
       </tr>
     </table>
-    <p class="footnote">{{DEALS_CAVEAT — what was NOT found this week; delete if none}}</p>
+    <p class="footnote">No verified local seed, soil, mulch, or perennial price drop was found for this issue.</p>
   </section>
 
   <div class="mom">
     <span class="tag">Forward to Mom</span>
-    <p>{{MOM_SUMMARY — one warm sentence, the week's single most actionable thing}}</p>
+    <p>Water deeply before Monday's heat, then use the cooler end of the week to sow spinach, lettuce, radishes, kale, and turnips for fall.</p>
   </div>
 
   <footer>
     <div class="foot-title">Sources &amp; Field Notes</div>
     <ul>
-      <li><a href="{{SOURCE_URL}}">{{SOURCE_LABEL}}</a></li>
+      <li><a href="https://cumberland.njaes.rutgers.edu/2025/07/01/summer-vegetable-plantings-for-fall-harvest/">Rutgers Cooperative Extension — South Jersey fall planting windows</a></li>
+      <li><a href="https://njaes.rutgers.edu/fs129/">Rutgers NJAES — Planning a Vegetable Garden</a></li>
       <li><a href="https://forecast.weather.gov/MapClick.php?lat=39.9004&lon=-75.0846">NWS point forecast — Oaklyn, NJ</a></li>
-      <!-- one <li> per source; every claim above must appear here -->
+      <li><a href="https://api.weather.gov/gridpoints/PHI/53,77/forecast">NWS API — Oaklyn daily forecast data</a></li>
     </ul>
-    <div class="colophon">Grown weekly for the raised beds of Oaklyn · The Groundskeeper, Saturday morning edition</div>
+    <div class="colophon">Grown weekly for the raised beds of Oaklyn · The Groundskeeper, Monday edition</div>
   </footer>
 
 </div>

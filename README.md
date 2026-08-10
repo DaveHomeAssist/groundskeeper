@@ -5,7 +5,7 @@ Published Saturday mornings.
 
 ## Files
 
-- `groundskeeper_volume_N.html` — the web edition of each issue (Vol. I = week of July 20, 2026).
+- `groundskeeper_volume_N.html` — the web edition of each issue (latest: Vol. II, week of August 10, 2026).
 - `groundskeeper_volume_N.email.html` — email-safe variant: all styles inline, web-safe fonts (Georgia/Arial/Courier), no SVG or pseudo-elements, table-based centering. Survives Gmail and Outlook.
 - `template.html` — start here for each new issue. Fill every `{{TOKEN}}`; the header comment carries the full conventions.
 
